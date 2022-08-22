@@ -72,6 +72,8 @@
     [_weatherview.btnLocation addTarget:self action:@selector(LoadLocationView) forControlEvents:UIControlEventTouchUpInside];
     [_weatherview.btnAdd addTarget:self action:@selector(AddLocation) forControlEvents:UIControlEventTouchUpInside];
 
+    
+    
 }
 
 

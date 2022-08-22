@@ -59,6 +59,10 @@
     [self LoadChildVC];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadChildVC) name:@"RefreshData" object:nil];
+    
+    if(_single.isInSearch){
+        _homeview.scrollviewPage.contentSize = CGSizeMake(0, 0);
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -81,22 +85,13 @@
     NSUInteger conut = _single.AddCityListArray.count;
     //homeview的scrollview有count页
    // _homeview.scrollviewPage.contentSize = CGSizeMake(SCREEN_WIDTH * conut, SCREEN_HEIGHT);
-    [_homeview.scrollviewPage setContentSize:CGSizeMake(SCREEN_WIDTH * 2, SCREEN_HEIGHT)];
+    [_homeview.scrollviewPage setContentSize:CGSizeMake(SCREEN_WIDTH * conut, SCREEN_HEIGHT)];
     NSLog(@"%f",_homeview.scrollviewPage.contentSize.width);
     //遍历每一页添加同一个View
-    for(int i=0; i<2; i++){
-        if(conut == 2){
+    for(int i=0; i<conut; i++){
             _single.page = i;
-            _LocationStr = _single.AddCityListArray[i];
-            NSLog(@"%f",_homeview.scrollviewPage.contentSize.width);
-
-        }
-        else{
-            _single.page = 0;
             //当前城市的经纬度
-            _LocationStr = _single.AddCityListArray[0];
-        }
-//        _single.page = 0;
+            _LocationStr = _single.AddCityListArray[i];
 //        //当前城市的经纬度
 //        _LocationStr = _single.AddCityListArray[0];
         //新建view添加到scrollview中
