@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "demo.html",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
