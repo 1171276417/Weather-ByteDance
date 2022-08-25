@@ -1,18 +1,20 @@
 //
-//  SelectLocationViewController.m
-//  Weather
+//  SelectCityViewController.m
+//  天气
 //
-//  Created by 邓杰 on 2022/8/20.
+//  Created by 邓杰 on 2022/8/25.
 //
 
-#import "SelectLocationViewController.h"
+#import "SelectCityViewController.h"
 #import "ScreenFrame.h"
 #import "NetWorkingData.h"
 #import "CoreLocation/CoreLocation.h"
-#import "HomeViewController.h"
 #import "Singleton.h"
+#import "SearchCityDataViewController.h"
+#import "HomeViewViewController.h"
 
-@interface SelectLocationViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationManagerDelegate>
+
+@interface SelectCityViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationManagerDelegate>
 @property(nonatomic, strong)UITableView *tableview;
 @property(nonatomic, strong)UISearchBar *searchBar;
 @property(nonatomic, strong)UITextField *searchtext;
@@ -25,12 +27,10 @@
 
 @end
 
-@implementation SelectLocationViewController
+@implementation SelectCityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
- 
     self.view.backgroundColor = [UIColor whiteColor];
 
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(29,0,SCREEN_WIDTH - 30,60)];
@@ -52,37 +52,28 @@
     _tableview.delegate = self;
     _tableview.dataSource = self;
     
+    //获取全世界城市列表
     _netData = [[NetWorkingData alloc] init];
     [_netData LoadCityListItemBlock:^(NSArray * _Nonnull dataArray) {
         self->_cityNameListArray = dataArray.mutableCopy;
-        NSLog(@"");
     }];
     
-
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarCancelButtonClicked:) name:@"backHome" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"backHome" object:nil];
-  
+    
+    
+    
+    
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    HomeViewViewController *homeVC = [[HomeViewViewController alloc] init];
     [homeVC LoadChildVC];
     _single = [Singleton sharedManager];
     _single.isInSearch = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RefreshData) name:@"RefreshData1" object:nil];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshData" object:nil];
    
 
-}
-
-- (void)RefreshData{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshData1" object:nil];
-    HomeViewController *homeVC = [[HomeViewController alloc] init];
-    [homeVC LoadChildVC];
 }
 
 ///当输入内容改变
@@ -107,8 +98,6 @@
 
 ///点击取消
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadview"
-                                                        object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -123,7 +112,7 @@
     }
 }
 
-///设置宽度
+//设置宽度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 30;
 }
@@ -153,15 +142,12 @@
                self.single.isInSearch = YES;
                self->_single.SeatchCityName = self->_searchResultCity[indexPath.row];
 
-               HomeViewController *homeVC = [[HomeViewController alloc] init];
-               [self presentViewController:homeVC animated:YES completion:nil];
+               SearchCityDataViewController *searchVC = [[SearchCityDataViewController alloc] init];
+               [self presentViewController:searchVC animated:YES completion:nil];
            }
        }];
     
     
 }
-
-
-
 
 @end

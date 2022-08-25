@@ -30,9 +30,10 @@
 		35213DA328B3268A0081C195 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35213D9828B3268A0081C195 /* HomeView.m */; };
 		35213DA428B3268A0081C195 /* AirQualityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35213D9928B3268A0081C195 /* AirQualityView.m */; };
 		35213DA728B326DE0081C195 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35213DA528B326DE0081C195 /* SceneDelegate.m */; };
-		35213DAE28B326F60081C195 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35213DA828B326F60081C195 /* HomeViewController.m */; };
-		35213DAF28B326F60081C195 /* SelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35213DAC28B326F60081C195 /* SelectLocationViewController.m */; };
-		35213DB028B326F60081C195 /* CityItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35213DAD28B326F60081C195 /* CityItemViewController.m */; };
+		35FBDF6228B7974000A001BA /* HomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FBDF6128B7974000A001BA /* HomeViewViewController.m */; };
+		35FBDF6828B7B52700A001BA /* SelectCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FBDF6728B7B52700A001BA /* SelectCityViewController.m */; };
+		35FBDF6B28B7B54500A001BA /* SearchCityDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FBDF6A28B7B54500A001BA /* SearchCityDataViewController.m */; };
+		35FBDF6E28B7D9C600A001BA /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FBDF6D28B7D9C600A001BA /* ChildViewController.m */; };
 		574CE3693F473555F98D4C00 /* libPods-天气.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6D4E59EFAABCBA174ACCEF /* libPods-天气.a */; };
 /* End PBXBuildFile section */
 
@@ -81,12 +82,14 @@
 		35213D9A28B3268A0081C195 /* AirQualityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirQualityView.h; sourceTree = "<group>"; };
 		35213DA528B326DE0081C195 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		35213DA628B326DE0081C195 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		35213DA828B326F60081C195 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		35213DA928B326F60081C195 /* CityItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityItemViewController.h; sourceTree = "<group>"; };
-		35213DAA28B326F60081C195 /* SelectLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLocationViewController.h; sourceTree = "<group>"; };
-		35213DAB28B326F60081C195 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		35213DAC28B326F60081C195 /* SelectLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLocationViewController.m; sourceTree = "<group>"; };
-		35213DAD28B326F60081C195 /* CityItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityItemViewController.m; sourceTree = "<group>"; };
+		35FBDF6028B7974000A001BA /* HomeViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewViewController.h; sourceTree = "<group>"; };
+		35FBDF6128B7974000A001BA /* HomeViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewViewController.m; sourceTree = "<group>"; };
+		35FBDF6628B7B52700A001BA /* SelectCityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCityViewController.h; sourceTree = "<group>"; };
+		35FBDF6728B7B52700A001BA /* SelectCityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCityViewController.m; sourceTree = "<group>"; };
+		35FBDF6928B7B54500A001BA /* SearchCityDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCityDataViewController.h; sourceTree = "<group>"; };
+		35FBDF6A28B7B54500A001BA /* SearchCityDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCityDataViewController.m; sourceTree = "<group>"; };
+		35FBDF6C28B7D9C600A001BA /* ChildViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
+		35FBDF6D28B7D9C600A001BA /* ChildViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChildViewController.m; sourceTree = "<group>"; };
 		4D6D4E59EFAABCBA174ACCEF /* libPods-天气.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-天气.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		911379D0880F2B61AD558DBA /* Pods-天气.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-天气.release.xcconfig"; path = "Target Support Files/Pods-天气/Pods-天气.release.xcconfig"; sourceTree = "<group>"; };
 		9762AD8742CA8DFDB3B19F2A /* Pods-天气.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-天气.debug.xcconfig"; path = "Target Support Files/Pods-天气/Pods-天气.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +158,7 @@
 		35213D4728B31FED0081C195 /* 天气主页 */ = {
 			isa = PBXGroup;
 			children = (
-				35213D4A28B3202C0081C195 /* Controller */,
+				35FBDF5F28B7971300A001BA /* Controller */,
 				35213D4B28B320330081C195 /* View */,
 			);
 			path = "天气主页";
@@ -177,19 +180,6 @@
 				35213D7928B3229A0081C195 /* MeViewController.m */,
 			);
 			path = "我";
-			sourceTree = "<group>";
-		};
-		35213D4A28B3202C0081C195 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				35213DAB28B326F60081C195 /* HomeViewController.h */,
-				35213DA828B326F60081C195 /* HomeViewController.m */,
-				35213DA928B326F60081C195 /* CityItemViewController.h */,
-				35213DAD28B326F60081C195 /* CityItemViewController.m */,
-				35213DAA28B326F60081C195 /* SelectLocationViewController.h */,
-				35213DAC28B326F60081C195 /* SelectLocationViewController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		35213D4B28B320330081C195 /* View */ = {
@@ -256,6 +246,21 @@
 				35213D9528B326890081C195 /* FutureSevenDayTableViewCell.m */,
 			);
 			path = TableViewcell;
+			sourceTree = "<group>";
+		};
+		35FBDF5F28B7971300A001BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35FBDF6028B7974000A001BA /* HomeViewViewController.h */,
+				35FBDF6128B7974000A001BA /* HomeViewViewController.m */,
+				35FBDF6C28B7D9C600A001BA /* ChildViewController.h */,
+				35FBDF6D28B7D9C600A001BA /* ChildViewController.m */,
+				35FBDF6628B7B52700A001BA /* SelectCityViewController.h */,
+				35FBDF6728B7B52700A001BA /* SelectCityViewController.m */,
+				35FBDF6928B7B54500A001BA /* SearchCityDataViewController.h */,
+				35FBDF6A28B7B54500A001BA /* SearchCityDataViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		A0EAF3C3F74CD1B1D538E119 /* Pods */ = {
@@ -385,22 +390,23 @@
 				35213D9C28B3268A0081C195 /* UvIndexView.m in Sources */,
 				35213D9D28B3268A0081C195 /* WindView.m in Sources */,
 				35213D9B28B3268A0081C195 /* RainFallView.m in Sources */,
+				35FBDF6828B7B52700A001BA /* SelectCityViewController.m in Sources */,
 				35213DA228B3268A0081C195 /* WeatherView.m in Sources */,
-				35213DAE28B326F60081C195 /* HomeViewController.m in Sources */,
 				35213DA028B3268A0081C195 /* FeelsLikeView.m in Sources */,
-				35213DAF28B326F60081C195 /* SelectLocationViewController.m in Sources */,
 				35213D9E28B3268A0081C195 /* VisView.m in Sources */,
 				35213D8528B322D30081C195 /* GetListItem.m in Sources */,
 				35213D8428B322D30081C195 /* ScreenFrame.m in Sources */,
 				35213D3028B31EF30081C195 /* AppDelegate.m in Sources */,
+				35FBDF6E28B7D9C600A001BA /* ChildViewController.m in Sources */,
 				35213D4128B31EF80081C195 /* main.m in Sources */,
 				35213DA728B326DE0081C195 /* SceneDelegate.m in Sources */,
+				35FBDF6228B7974000A001BA /* HomeViewViewController.m in Sources */,
 				35213D7728B3227C0081C195 /* LivingViewController.m in Sources */,
 				35213D7A28B3229A0081C195 /* MeViewController.m in Sources */,
 				35213DA328B3268A0081C195 /* HomeView.m in Sources */,
 				35213DA428B3268A0081C195 /* AirQualityView.m in Sources */,
-				35213DB028B326F60081C195 /* CityItemViewController.m in Sources */,
 				35213D8628B322D30081C195 /* Singleton.m in Sources */,
+				35FBDF6B28B7B54500A001BA /* SearchCityDataViewController.m in Sources */,
 				35213D9F28B3268A0081C195 /* FutureOneDayTableViewCell.m in Sources */,
 				35213DA128B3268A0081C195 /* FutureSevenDayTableViewCell.m in Sources */,
 				35213D8328B322D30081C195 /* NetWorkingData.m in Sources */,
@@ -548,6 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FUYWJ9UF9U;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "天气/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的位置信息来获得您所在地的天气数据";
@@ -577,6 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FUYWJ9UF9U;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "天气/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的位置信息来获得您所在地的天气数据";

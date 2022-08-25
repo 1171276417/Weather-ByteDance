@@ -6,10 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HomeViewController.h"
 #import "MeViewController.h"
 #import "LivingViewController.h"
 #import "Singleton.h"
+#import "HomeViewViewController.h"
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CLLocation.h>

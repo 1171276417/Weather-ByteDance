@@ -11,7 +11,7 @@
 @property(nonatomic,strong)CLLocationManager *locMgr;
 @property(nonatomic, strong)Singleton *single;
 @property(nonatomic, strong)UITabBarController *tabbarcontroller;
-@property(nonatomic, strong)HomeViewController *homeVC;
+@property(nonatomic, strong)HomeViewViewController *homeVC;
 @property(nonatomic, strong)LivingViewController *LivingVC;
 @property(nonatomic, strong)MeViewController *meVC;
 
@@ -136,34 +136,35 @@
             NSLog(@"国家:%@", placeMark.country);
         
         self->_single.AddCityNameArray = @[].mutableCopy;
-        [self->_single.AddCityNameArray addObject:placeMark.subLocality];
-        
-        _single.SelfLocation = locat;
-        _single.AddCityListArray = @[].mutableCopy;
-        [_single.AddCityListArray addObject:LocationStr];
+//        [self->_single.AddCityNameArray addObject:placeMark.subLocality];
+        [self->_single.AddCityNameArray addObject:@"12341"];
+
+        self.single.SelfLocation = locat;
+        self.single.AddCityListArray = @[].mutableCopy;
+        [self.single.AddCityListArray addObject:LocationStr];
         
         //创建三个子控制器
-        _homeVC=[[HomeViewController alloc] init];
-        _LivingVC=[[LivingViewController alloc] init];
-        _meVC=[[MeViewController alloc] init];
+        self.homeVC=[[HomeViewViewController alloc] init];
+        self.LivingVC=[[LivingViewController alloc] init];
+        self.meVC=[[MeViewController alloc] init];
         
         //底部标题设置标题
-        _homeVC.tabBarItem.title=@"天气";
-        _LivingVC.tabBarItem.title=@"生活";
-        _meVC.tabBarItem.title=@"我";
+        self.homeVC.tabBarItem.title=@"天气";
+        self.LivingVC.tabBarItem.title=@"生活";
+        self.meVC.tabBarItem.title=@"我";
 
         //设置背景颜色
-        _homeVC.view.backgroundColor=[UIColor whiteColor];
-        _LivingVC.view.backgroundColor=[UIColor whiteColor];
-        _meVC.view.backgroundColor=[UIColor whiteColor];
+        self.homeVC.view.backgroundColor=[UIColor whiteColor];
+        self.LivingVC.view.backgroundColor=[UIColor whiteColor];
+        self.meVC.view.backgroundColor=[UIColor whiteColor];
         
         //设置图标
-        _homeVC.tabBarItem.image=[UIImage imageNamed:@"2"];
-        _LivingVC.tabBarItem.image=[UIImage imageNamed:@"2"];
-        _meVC.tabBarItem.image=[UIImage imageNamed:@"3"];
+        self.homeVC.tabBarItem.image=[UIImage imageNamed:@"2"];
+        self.LivingVC.tabBarItem.image=[UIImage imageNamed:@"2"];
+        self.meVC.tabBarItem.image=[UIImage imageNamed:@"3"];
         
-        [_tabbarcontroller setViewControllers:@[_homeVC,_LivingVC,_meVC]];
-        _window.rootViewController=_tabbarcontroller;
+        [self.tabbarcontroller setViewControllers:@[self.homeVC,self.LivingVC,self.meVC]];
+        self.window.rootViewController=self.tabbarcontroller;
         
         [self.window makeKeyAndVisible];
         
