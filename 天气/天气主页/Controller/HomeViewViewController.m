@@ -11,8 +11,9 @@
 #import "Singleton.h"
 #import "WeatherView.h"
 #import "SelectCityViewController.h"
+#import "GetListItem.h"
 
-@interface HomeViewViewController ()
+@interface HomeViewViewController ()<UIScrollViewDelegate>
 @property(nonatomic, strong)HomeView *homeview;
 @property(nonatomic, strong)Singleton *single;
 @property(nonatomic, strong)WeatherView *weatherView;
@@ -27,10 +28,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _homeview = [[HomeView alloc] init];
-        [_homeview setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBARHEIGHT)];
-        [_homeview LoadHomeView];
-        [self.view addSubview:_homeview];
+     
     };
     return self;
 }
@@ -44,27 +42,55 @@
 }
 
 
+
 ///加载子视图控制器
 - (void)LoadChildVC{
     _single = [Singleton sharedManager];
-    NSUInteger conut = _single.AddCityListArray.count;    //count为已经添加城市的数量，为天气的页数
-    _homeview.scrollviewPage.contentSize = CGSizeMake(SCREEN_WIDTH*conut, SCREEN_HEIGHT);    //homeview的scrollview有count页
+   // [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+    _homeview = [[HomeView alloc] init];
+    [_homeview setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBARHEIGHT)];
+    [_homeview LoadHomeView];
+    [self.view addSubview:_homeview];
+    _homeview.scrollviewPage.delegate = self;
+    _homeview.scrollviewPage.contentOffset = CGPointZero;
     
+    NSString *path1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"Name"];
+    NSString *path2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"Location"];
+    NSString *path3 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"Data"];
+    
+    if([NSKeyedUnarchiver unarchiveObjectWithFile:path1]){
+        NSMutableArray *item = [NSKeyedUnarchiver unarchiveObjectWithFile:path1];
+        _single.AddCityNameArray = item;
+        NSLog(@"");
+    }
+    if([NSKeyedUnarchiver unarchiveObjectWithFile:path2]){
+        NSMutableArray *item = [NSKeyedUnarchiver unarchiveObjectWithFile:path2];
+        _single.AddCityListArray = item;
+        NSLog(@"");
+    }
+    if([NSKeyedUnarchiver unarchiveObjectWithFile:path3]){
+        NSMutableArray *item = [NSKeyedUnarchiver unarchiveObjectWithFile:path3];
+        _single.AddCityDataArray = item;
+        NSLog(@"");
+    }
+    
+    NSUInteger conut = _single.AddCityListArray.count;    //count为已经添加城市的数量，为天气的页数
+    [_homeview.scrollviewPage setContentSize:CGSizeMake(SCREEN_WIDTH*conut, SCREEN_HEIGHT)];
+    
+    
+
     for(int i=0; i<conut ; i++){
+        _single = [Singleton sharedManager];
         _single.page = i;
         
         _childVC = [[ChildViewController alloc] init];
         [self addChildViewController:_childVC];
-        [_childVC.view setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [_childVC.view setFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         [self.homeview.scrollviewPage addSubview:_childVC.view];
         [_childVC didMoveToParentViewController:self];
-        [_homeview.scrollviewPage setNeedsLayout];
-
-        
-        
-        
+     
     }
-
    
 }
 
@@ -75,5 +101,8 @@
     [self presentViewController:_selectVC animated:YES completion:nil];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"");
+}
 
 @end

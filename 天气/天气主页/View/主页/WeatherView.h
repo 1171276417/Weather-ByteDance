@@ -49,6 +49,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong)UvIndexView *uvIndexView;
 ///能见度
 @property(nonatomic, strong)VisView *visView;
+///生活预报
+
+
+///更多链接
+@property(nonatomic, strong)UIButton *btnLink;
 
 
 - (void)LoadWeatherView;

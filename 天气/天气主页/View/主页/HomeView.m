@@ -12,7 +12,7 @@
 - (void)LoadHomeView{
     
     _scrollviewPage = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    _scrollviewPage.contentSize = CGSizeMake(SCREEN_WIDTH * 3, SCREEN_HEIGHT);
+//    _scrollviewPage.contentSize = CGSizeMake(SCREEN_WIDTH * 3, SCREEN_HEIGHT);
     [self addSubview:_scrollviewPage];
     _scrollviewPage.pagingEnabled = YES;
     _scrollviewPage.showsVerticalScrollIndicator = NO;

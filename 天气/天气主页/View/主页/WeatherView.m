@@ -15,7 +15,7 @@
     
     UIImageView *back = [[UIImageView alloc] init];
     [back setImage:[UIImage imageNamed:@"background1"]];
-    [back setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    [back setFrame:CGRectMake(0, -50, SCREEN_WIDTH, SCREEN_HEIGHT+50)];
     [self addSubview:back];
     
     
@@ -29,7 +29,7 @@
     
     /**地区名*/
     _cityname = [[UILabel alloc] init];
-    [_cityname setFrame:CGRectMake(SCREEN_WIDTH/2-100, 50, 200, 50)];
+    [_cityname setFrame:CGRectMake(SCREEN_WIDTH/2-180, 50, 360, 50)];
 //    _cityname.text = @"广州市";
     _cityname.textColor = [UIColor blackColor];
     _cityname.font = [UIFont systemFontOfSize:25];
@@ -48,7 +48,6 @@
     /**天气描述*/
     _describe = [[UILabel alloc] init];
     [_describe setFrame:CGRectMake(SCREEN_WIDTH/2-100, 200, 200, 50)];
-//    _describe.text = @"大部晴朗";
     _describe.textColor = [UIColor blackColor];
     _describe.font = [UIFont systemFontOfSize:20];
     _describe.textAlignment = NSTextAlignmentCenter;
@@ -57,7 +56,6 @@
     /**最高最低温度*/
     _temperaureMaxAndMin = [[UILabel alloc] init];
     [_temperaureMaxAndMin setFrame:CGRectMake(SCREEN_WIDTH/2-150, 250, 300, 50)];
-//    _temperaureMaxAndMin.text = @"";
     _temperaureMaxAndMin.textColor = [UIColor blackColor];
     _temperaureMaxAndMin.font = [UIFont systemFontOfSize:20];
     _temperaureMaxAndMin.textAlignment = NSTextAlignmentCenter;
@@ -175,6 +173,12 @@
     _btnAdd.frame = CGRectMake(390-50, 40, 30, 30);
     [_btnAdd setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
     [self addSubview:_btnAdd];
+    
+    
+    _btnLink = [UIButton buttonWithType:UIButtonTypeCustom];
+    _btnLink.frame = CGRectMake(340, 160, 30, 30);
+    [_btnLink setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    [self addSubview:_btnLink];
     
     
 }

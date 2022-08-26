@@ -7,9 +7,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MeViewController.h"
-#import "LivingViewController.h"
 #import "Singleton.h"
 #import "HomeViewViewController.h"
+#import "SelectionViewController.h"
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CLLocation.h>

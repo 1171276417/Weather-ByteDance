@@ -53,16 +53,19 @@
     _tableview.dataSource = self;
     
     //获取全世界城市列表
-    _netData = [[NetWorkingData alloc] init];
-    [_netData LoadCityListItemBlock:^(NSArray * _Nonnull dataArray) {
-        self->_cityNameListArray = dataArray.mutableCopy;
-    }];
-    
-    
-    
-    
-    
-    
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"CityList"];
+
+    if([NSKeyedUnarchiver unarchiveObjectWithFile:path]){
+        NSMutableArray *item = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        self.cityNameListArray = item;
+    }
+    else{
+        _netData = [[NetWorkingData alloc] init];
+        [_netData LoadCityListItemBlock:^(NSArray * _Nonnull dataArray) {
+            self.cityNameListArray = dataArray.mutableCopy;
+            [NSKeyedArchiver archiveRootObject: self.cityNameListArray toFile:path];
+        }];
+    }
     
 }
 
@@ -72,9 +75,8 @@
     [homeVC LoadChildVC];
     _single = [Singleton sharedManager];
     _single.isInSearch = NO;
-   
-
 }
+
 
 ///当输入内容改变
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -99,6 +101,28 @@
 ///点击取消
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+///搜索
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:searchBar.text completionHandler:^(NSArray *placemarks, NSError *error){
+           NSLog(@"查询记录数:%ld",[placemarks count]);
+           if ([placemarks count] > 0) {
+               CLPlacemark *placemark = [placemarks objectAtIndex:0];
+               CLLocationCoordinate2D coordinatee = placemark.location.coordinate;
+               
+               NSString *strCoordinate = [[[NSString stringWithFormat:@"%.2f",coordinatee.longitude] stringByAppendingString:@","] stringByAppendingString:[NSString stringWithFormat:@"%.2f",coordinatee.latitude]];
+               NSLog(@"");
+               self->_single = [Singleton sharedManager];
+               self->_single.SearchLocation = strCoordinate;
+               self.single.isInSearch = YES;
+               self->_single.SeatchCityName = searchBar.text;
+
+               SearchCityDataViewController *searchVC = [[SearchCityDataViewController alloc] init];
+               [self presentViewController:searchVC animated:YES completion:nil];
+           }
+       }];
+
 }
 
 

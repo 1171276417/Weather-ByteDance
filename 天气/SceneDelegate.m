@@ -12,7 +12,7 @@
 @property(nonatomic, strong)Singleton *single;
 @property(nonatomic, strong)UITabBarController *tabbarcontroller;
 @property(nonatomic, strong)HomeViewViewController *homeVC;
-@property(nonatomic, strong)LivingViewController *LivingVC;
+@property(nonatomic, strong)SelectionViewController *selectVC;
 @property(nonatomic, strong)MeViewController *meVC;
 
 @end
@@ -21,6 +21,9 @@
 
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+    
+    _single = [Singleton sharedManager];
+    _single.AddCityDataArray = @[].mutableCopy;
     
     //获取定位
     self.locMgr=[[CLLocationManager alloc]init];
@@ -36,6 +39,8 @@
 
     
     _tabbarcontroller=[[UITabBarController alloc] init];
+    
+    
  
 }
 
@@ -136,8 +141,12 @@
             NSLog(@"国家:%@", placeMark.country);
         
         self->_single.AddCityNameArray = @[].mutableCopy;
-//        [self->_single.AddCityNameArray addObject:placeMark.subLocality];
-        [self->_single.AddCityNameArray addObject:@"12341"];
+        if(placeMark.subLocality == nil){
+            [self->_single.AddCityNameArray addObject:@"沙坪坝区"];
+        }
+        else{
+            [self->_single.AddCityNameArray addObject:placeMark.subLocality];
+        }
 
         self.single.SelfLocation = locat;
         self.single.AddCityListArray = @[].mutableCopy;
@@ -145,37 +154,31 @@
         
         //创建三个子控制器
         self.homeVC=[[HomeViewViewController alloc] init];
-        self.LivingVC=[[LivingViewController alloc] init];
+        self.selectVC=[[SelectionViewController alloc] init];
         self.meVC=[[MeViewController alloc] init];
         
         //底部标题设置标题
         self.homeVC.tabBarItem.title=@"天气";
-        self.LivingVC.tabBarItem.title=@"生活";
+        self.selectVC.tabBarItem.title=@"生活资讯";
         self.meVC.tabBarItem.title=@"我";
 
         //设置背景颜色
         self.homeVC.view.backgroundColor=[UIColor whiteColor];
-        self.LivingVC.view.backgroundColor=[UIColor whiteColor];
+        self.selectVC.view.backgroundColor=[UIColor whiteColor];
         self.meVC.view.backgroundColor=[UIColor whiteColor];
         
         //设置图标
         self.homeVC.tabBarItem.image=[UIImage imageNamed:@"2"];
-        self.LivingVC.tabBarItem.image=[UIImage imageNamed:@"2"];
+        self.selectVC.tabBarItem.image=[UIImage imageNamed:@"2"];
         self.meVC.tabBarItem.image=[UIImage imageNamed:@"3"];
         
-        [self.tabbarcontroller setViewControllers:@[self.homeVC,self.LivingVC,self.meVC]];
+        [self.tabbarcontroller setViewControllers:@[self.homeVC,self.selectVC,self.meVC]];
         self.window.rootViewController=self.tabbarcontroller;
         
         [self.window makeKeyAndVisible];
-        
-        
+    
     }];
-    
-         
-    
-   
-
-    
+  
 }
 
 
